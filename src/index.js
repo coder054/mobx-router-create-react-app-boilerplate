@@ -19,6 +19,9 @@ const stores = {
     UIStore
 };
 
+window.stores = stores
+
+
 ReactDOM.render(
     <Provider {...stores}>
         <HashRouter>

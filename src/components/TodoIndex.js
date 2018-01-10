@@ -9,7 +9,6 @@ import {
 class TodoIndex extends Component {
     render() {
         const { TodoStore, UserStore } = this.props
-        console.log(TodoStore)
         return (
             <div className="TodoIndexRoot">
                 {UserStore.authenticated? null : <Redirect to="/" />}
@@ -27,7 +26,7 @@ class TodoIndex extends Component {
                         )
                     }
                 </ul>
-
+                <div> Progress: {TodoStore.completedTodosCount}/{TodoStore.todos.length} </div>
                 <button onClick={() => TodoStore.addTodo(prompt('name of todo', 'Coffe please'))}> New Todo </button>
 
             </div>
