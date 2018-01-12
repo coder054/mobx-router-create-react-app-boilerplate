@@ -36,4 +36,4 @@ registerServiceWorker();
 
 
 
-useStrict(true);
+useStrict(false);

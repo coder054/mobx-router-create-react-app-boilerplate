@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react';
 import {
-  Redirect
+    Redirect
 } from 'react-router-dom'
+
+import DevTools from 'mobx-react-devtools';
 
 @inject('TodoStore', 'UserStore')
 @observer
@@ -11,7 +13,8 @@ class TodoIndex extends Component {
         const { TodoStore, UserStore } = this.props
         return (
             <div className="TodoIndexRoot">
-                {UserStore.authenticated? null : <Redirect to="/" />}
+                <DevTools />
+                {/* {UserStore.authenticated ? null : <Redirect to="/" />} */}
                 <ul>
                     {
                         TodoStore.todos.slice().map((val, key) =>

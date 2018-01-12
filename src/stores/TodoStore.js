@@ -1,4 +1,5 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, autorun, reaction } from 'mobx';
+
 
 var ID = function () {
     // Math.random should be unique because of its seeding algorithm.
@@ -9,6 +10,22 @@ var ID = function () {
 
 
 export class TodoStore {
+
+    constructor() {
+        autorun(() => {
+            // if (this.completedTodosCount == this.todos.length) {
+            //     alert('you completed all!')
+            // }
+            console.log('name is:' + this.name)
+        })
+
+        autorun(() => {
+            if (this.completedTodosCount == this.todos.length) {
+                alert('you completed all!')
+            }
+        })
+    }
+
 
     @observable todos = [
         {
@@ -22,9 +39,10 @@ export class TodoStore {
             done: true
         }
     ];
-
+    @observable name = 'ssssssssss'
 
     @computed get completedTodosCount() {
+        console.log('running completedTodosCount')
         return this.todos.filter(todo => todo.done === true).length
     };
 
@@ -37,18 +55,18 @@ export class TodoStore {
         })
     }
 
-    @action deleteTodo(id){
+    @action deleteTodo(id) {
         var newtodosList = this.todos.filter(val => val.id !== id)
         this.todos = newtodosList
     }
 
-    @action toggleTodoStatus(id){
-       this.todos.map(val => {
-           if(val.id === id){
-               val.done = !val.done
-           }
-           return val
-       })
+    @action toggleTodoStatus(id) {
+        this.todos.map(val => {
+            if (val.id === id) {
+                val.done = !val.done
+            }
+            return val
+        })
     }
 }
 

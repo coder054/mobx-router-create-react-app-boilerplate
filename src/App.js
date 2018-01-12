@@ -9,6 +9,10 @@ import {
 import Header from './components/Header';
 import Home from './components/Home';
 import TodoIndex from './components/TodoIndex';
+import User from './components/User';
+import requireAuth from './components/HOC/requireAuth';
+
+
 
 
 
@@ -22,8 +26,8 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/todos" component={TodoIndex} />
-          <Route exact path="/todos" component={TodoIndex} />
+          <Route exact path="/todos" component={requireAuth(TodoIndex)} />
+          <Route exact path="/user" component={requireAuth(User)} />
 
         </Switch>
       </div>

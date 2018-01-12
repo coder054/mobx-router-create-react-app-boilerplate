@@ -8,6 +8,7 @@ export class UserStore {
     @observable authenticated = false;
 
     @computed get fullName() {
+        console.log('calculating fullname')
         return `${this.firstName} ${this.lastName}`
     };
 

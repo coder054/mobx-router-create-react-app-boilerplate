@@ -26,7 +26,10 @@ class Header extends Component {
 
                 }} to="/todos"> Todos </Link>
                 {UserStore.authenticated ?
-                    <span> Ban da login <button onClick={() => UserStore.changeAuthentication(false)}> Logout </button> </span>
+                    <span>
+                        Ban da login <button onClick={() => UserStore.changeAuthentication(false)}> Logout </button>
+                        <Link to="/user"> User info </Link>
+                     </span>
                     :
                     <span> Ban chua login <button onClick={() => {
                         UserStore.changeAuthentication(true)
