@@ -9,7 +9,7 @@ class User extends Component {
         return (
             <div className="UserRoot">
                 <div className="fullname">
-                    full name is :
+                    full name is : {UserStore.fullName}
                 </div>
             </div>
         )
